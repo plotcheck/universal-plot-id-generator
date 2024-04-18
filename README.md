@@ -34,6 +34,10 @@ pnpm add @maphubs/universal-plot-id
 
 ### Command line
 
+```sh
+npx tsx cli.ts <input.geojson> <output.geojson>
+```
+
 ### API
 
 ```ts
