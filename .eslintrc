@@ -1,0 +1,25 @@
+/** @format */
+
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:unicorn/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "unicorn/filename-case": "off",
+    "camelcase": "off",
+    "object-curly-spacing": "off",
+    "unicorn/catch-error-name": ["error", { "name": "error" }]
+  },
+
+  "parserOptions": {
+    "ecmaVersion": 2022
+  },
+  "env": {
+    "node": true
+  },
+  "globals": {},
+  "plugins": ["@typescript-eslint", "unicorn", "promise"]
+}

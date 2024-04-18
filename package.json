@@ -1,0 +1,32 @@
+{
+  "name": "universal-plot-id",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "generate": "npx tsx cli.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@placemarkio/check-geojson": "^0.1.12",
+    "@turf/rewind": "^6.5.0",
+    "@turf/truncate": "^6.5.0"
+  },
+  "devDependencies": {
+    "@types/geojson": "^7946.0.14",
+    "@types/node": "^20.12.2",
+    "typescript": "^5.4.3",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-security": "^2.1.1",
+    "eslint-plugin-unicorn": "^51.0.1",
+    "prettier": "^3.2.5",
+    "tsx": "^4.7.1"
+  }
+}
