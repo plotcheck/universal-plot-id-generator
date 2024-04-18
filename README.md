@@ -27,9 +27,9 @@ This tool has the following goals:
 ### Install
 
 ```sh
-npm install @maphubs/universal-plot-id
+npm install @plotcheck/universal-plot-id
 #or
-pnpm add @maphubs/universal-plot-id
+pnpm add @plotcheck/universal-plot-id
 ```
 
 ### Command line
