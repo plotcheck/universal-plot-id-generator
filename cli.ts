@@ -36,25 +36,28 @@ if (features.length === 0) {
 
 console.log(`Processing ${features.length} features...`)
 
-// for each feature
-for (const [index, feature] of features.entries()) {
-  const { geometry } = feature
-  if (geometry.type !== 'Polygon') {
-    console.error(`Invalid GeoJSON: feature ${index} is not a Polygon`)
-    process.exit(1)
+const run = async () => {
+  // for each feature
+  for await (const [index, feature] of features.entries()) {
+    const { geometry } = feature
+    if (geometry.type !== 'Polygon') {
+      console.error(`Invalid GeoJSON: feature ${index} is not a Polygon`)
+      process.exit(1)
+    }
+
+    // standardize the geometry, to produce a consistent hash
+    standardize(geometry)
+
+    // compute the ID from the geometry
+    const id = await computeID(geometry, 96)
+
+    feature.properties['UPID'] = id
   }
 
-  // standardize the geometry, to produce a consistent hash
-  standardize(geometry)
+  // write the updated GeoJSON file
+  fs.writeFileSync(process.argv[3], JSON.stringify(geoJSON))
 
-  // compute the ID from the geometry
-  const id = computeID(geometry, 96)
-
-  feature.properties['UPID'] = id
+  console.log('GeoJSON file written successfully')
+  process.exit(0)
 }
-
-// write the updated GeoJSON file
-fs.writeFileSync(process.argv[3], JSON.stringify(geoJSON))
-
-console.log('GeoJSON file written successfully')
-process.exit(0)
+run()

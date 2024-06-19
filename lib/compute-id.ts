@@ -1,10 +1,10 @@
 import type { Polygon } from 'geojson'
-import { createHash } from 'node:crypto'
+import crypto from './crypto-wrapper'
 
-const computeID = (geometry: Polygon, bits: number = 96) => {
+const computeID = async (geometry: Polygon, bits: number = 96) => {
   const geometryString = JSON.stringify(geometry)
   // compute SHA256 hash of the geometry
-  const hashHex = createHash('sha256').update(geometryString).digest('hex')
+  const hashHex = await crypto.sha256(geometryString)
 
   // trunctate to the selected size
   // compute hex size from bits
