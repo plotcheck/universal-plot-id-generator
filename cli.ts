@@ -5,6 +5,7 @@ import fs from 'node:fs'
 import { check } from '@placemarkio/check-geojson'
 import standardize from './lib/standardize'
 import computeID from './lib/compute-id'
+import { FeatureCollection } from 'geojson'
 
 // if args are not provided write help
 if (process.argv.length !== 4) {
@@ -21,7 +22,7 @@ const file = fs.readFileSync(fileName, 'utf8')
 let geoJSON
 
 try {
-  geoJSON = check(file)
+  geoJSON = check(file) as FeatureCollection
 } catch (error) {
   console.error(`Invalid GeoJSON file`)
   console.error(error)
@@ -50,6 +51,10 @@ const run = async () => {
 
     // compute the ID from the geometry
     const id = await computeID(geometry, 96)
+
+    if (!feature.properties) {
+      feature.properties = {}
+    }
 
     feature.properties['UPID'] = id
   }

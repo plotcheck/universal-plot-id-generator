@@ -1,16 +1,20 @@
 {
   "name": "@plotcheck/universal-plot-id",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "This code calcuates a unique ID for a GeoJSON polygon geometry. It can be used offiline, and does not require any form of online database.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "generate": "npx tsx cli.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "tsc"
   },
   "keywords": [],
   "author": "Kristofor Carle <kris@maphubs.com>",
   "license": "ISC",
   "dependencies": {
+    "@humanwhocodes/momoa": "^3.0.6",
     "@placemarkio/check-geojson": "^0.1.12",
     "@turf/rewind": "^6.5.0",
     "@turf/truncate": "^6.5.0"
@@ -18,7 +22,6 @@
   "devDependencies": {
     "@types/geojson": "^7946.0.14",
     "@types/node": "^20.12.2",
-    "typescript": "^5.4.3",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "eslint": "^8.15.0",
@@ -27,7 +30,8 @@
     "eslint-plugin-security": "^2.1.1",
     "eslint-plugin-unicorn": "^51.0.1",
     "prettier": "^3.2.5",
-    "tsx": "^4.7.1"
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.3"
   },
   "directories": {
     "lib": "lib"
