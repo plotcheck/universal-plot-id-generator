@@ -18,8 +18,8 @@ if (typeof window !== 'undefined' && window.crypto && window.crypto.subtle) {
   }
 } else {
   // Node.js environment
-  // eslint-disable-next-line @typescript-eslint/no-var-requires, unicorn/prefer-module
-  const { createHash } = require('node:crypto')
+  // eslint-disable-next-line @typescript-eslint/no-var-requires, unicorn/prefer-module, unicorn/prefer-node-protocol
+  const { createHash } = require('crypto')
   crypto = {
     sha256(data: string): string {
       return createHash('sha256').update(data).digest('hex')
