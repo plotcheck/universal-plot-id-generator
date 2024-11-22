@@ -1,8 +1,8 @@
 import rewind from '@turf/rewind'
 import truncate from '@turf/truncate'
-import type { Polygon } from 'geojson'
+import type { Polygon, MultiPolygon } from 'geojson'
 
-const standardize = (geometry: Polygon) => {
+const standardize = (geometry: Polygon | MultiPolygon) => {
   // rewind the ploygon for consistent winding order
   rewind(geometry, { mutate: true })
   // truncate the coordinates to 6 decimal places, remove z value if present

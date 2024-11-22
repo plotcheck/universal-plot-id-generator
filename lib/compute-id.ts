@@ -1,7 +1,10 @@
-import type { Polygon } from 'geojson'
+import type { Polygon, MultiPolygon } from 'geojson'
 import crypto from './crypto-wrapper'
 
-const computeID = async (geometry: Polygon, bits: number = 96) => {
+const computeID = async (
+  geometry: Polygon | MultiPolygon,
+  bits: number = 96
+) => {
   const geometryString = JSON.stringify(geometry)
   // compute SHA256 hash of the geometry
   const hashHex = await crypto.sha256(geometryString)
